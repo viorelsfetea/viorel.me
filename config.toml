@@ -1,0 +1,7 @@
+baseURL = "https://viorel.me/"
+languageCode = "en-us"
+title = "Viorel Sfetea"
+theme = "tale"
+
+[permalinks]
+  posts = "/:year/:slug/"
