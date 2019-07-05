@@ -5,3 +5,11 @@ theme = "tale"
 
 [permalinks]
   posts = "/:year/:slug/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[outputFormats]
+[outputFormats.RSS]
+  mediatype = "application/rss"
+  baseName = "feed"
