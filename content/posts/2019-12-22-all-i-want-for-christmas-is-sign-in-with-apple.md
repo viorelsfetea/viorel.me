@@ -13,7 +13,7 @@ tags:
 
 **TL;DR: Apple please don't make me pay 100€ per year to implement Sign in with Apple on my website. Please make it free and encourage as many people as possible to use it outside the AppleOS environments. I want to implement this as a developer and I want to use the feature as a user.**
 
-I'm indie-writing a webapp at the moment and I was contemplating about ways to make it easier formy users to sign in. I'd have the normal e-mail/password login and I'd have social logins. I want to make it as easy as possible for my users to board on, so I think the social logins are really a must. 
+I'm indie-writing a webapp at the moment and I was contemplating about ways to make it easier for my users to sign in. I'd have the normal e-mail/password login and I'd have social logins. I want to make it as easy as possible for my users to board on, so I think the social logins are really a must. 
 
 But the problem is that there are a gazillion "Sign in with-" services and I have to narrow it down. And I sat down and did just that: I narrowed it down to just Google and Apple. It makes sense if you think about it this way: almost all users that will visit my page will own either an Android or an Apple phone. "Sign in with Google" and "Sign in with Apple" will cover most users.
 
