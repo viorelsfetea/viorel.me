@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The complete tutorial on deploying your app using Gitlab CI and SSH"
-summary: "It's update-the-knowledgebase-a-clock. I need to deploy an app from Gitlab CI to a remote server. Since all the articles I could find online are of the 'draw the rest of the fucking owl' type, here's another one. I hope this one's complete. I use Ubuntu (because I like looking at ads when I log in)." 
+summary: "It's update-the-knowledgebase-a-clock. I need to deploy an app from Gitlab CI to a remote server. Since all the articles I could find online are of the 'draw the rest of the owl' type, here's another one. I hope this one's complete. I use Ubuntu (because I like looking at ads when I log in)." 
 date: 2020-08-06 12:00:18
 comments: false
 author: Viorel
@@ -11,7 +11,7 @@ tags:
 - development
 ---
 
-It's update-the-knowledgebase-a-clock. I need to deploy an app from Gitlab CI to a remote server. Since all the articles I could find online are of the "[draw the rest of the fucking owl](https://knowyourmeme.com/memes/how-to-draw-an-owl)" type, here's another one. I hope this one's complete. I use Ubuntu (because I like looking at ads when I log in).
+It's update-the-knowledgebase-a-clock. I need to deploy an app from Gitlab CI to a remote server. Since all the articles I could find online are of the "[draw the rest of the owl](https://knowyourmeme.com/memes/how-to-draw-an-owl)" type, here's another one. I hope this one's complete. I use Ubuntu (because I like looking at ads when I log in).
 
 *Before we start, I'd like to note that you should SSH only if you need to run commands on the remote server. If you're just copying files around, please turn around and look for a SFTP tutorial.*
 
@@ -19,7 +19,7 @@ It's update-the-knowledgebase-a-clock. I need to deploy an app from Gitlab CI to
 
 Assumptions: 
 
-1. Gitlab CI is already set up and there is a runner running. 
+1. You already set up Gitlab CI and there is a runner running. 
 2. The Ubuntu Server is up and running and you have access to it.
 3. This tutorial is agnostic in the sense that it doesn't care how the app should actually run on the server. It just takes the file(s) there.
 
@@ -43,31 +43,31 @@ What we're doing here is basically creating a user with SSH access to our server
 
 Go to **your computer** and open up a terminal. Not on the server, on your computer. To make this tutorial as OS agnostic as possible, I'm using the WSL Ubuntu shell in Windows 10.
 
-We're now going to create the public/private keypair on your local computer. Since we're creating this public/private key for our own use, let's just create a separate user for what's about to happen. We'll delete it afterwards. That way we make sure that this key is dedicated and won't be copied anywhere else.
+We're now going to create the public/private keypair on your local computer. Since we're creating this public/private key for our own use, let's just create a separate user for what's about to happen. We'll delete it afterwards. That way we make sure this key is dedicated and won't be copied anywhere else.
 
 `sudo adduser lenny_deployman`
 
 Log in as this user: `sudo su lenny_deployman`
 
-And now let the fund begin:
+And now let the fun begin:
 
 1. Generate the keys: `ssh-keygen -t rsa -b 4096`. We're using RSA here. It's not the best, not the worst, but it's backwards compatible, so let's choose the least headache at this point.
     1. Press "Enter" when asked for the file where to save the key
-    2. **Important!** Press "Enter" when asked for the passphrase so the passphrase is empty. This [the recommended way to go in the Gitlab docs](https://docs.gitlab.com/ee/ci/ssh_keys/), otherwise the script will ask for a password. There are ways to also save the passphrase in a Gitlab variable and then passing it to the script, but they're cumbersome and IMHO the benefits do not match the effort.
+    2. **Important!** Press "Enter" when asked for the passphrase, so the passphrase is empty. This [the recommended way to go in the Gitlab docs](https://docs.gitlab.com/ee/ci/ssh_keys/), otherwise the script will ask for a password. There are ways to also save the passphrase in a Gitlab variable and then passing it to the script, but they're cumbersome and IMHO the benefits do not match the effort.
 2. Copy the key to the remote server: `ssh-copy-id myapp@server-ip`. You will be prompted for myapp's password.
 3. Test the SSH connection: `ssh myapp@server-ip`. If everything went OK, you should get logged in automatically to the server and in your home folder.
 
 ## Gitlab's next
 
-So what we're basically doing now is copying the private key we have on our computer to Gitlab and making it use it to deploy the app to our server. Connecting to the server via a key works like this: you create a pair of keys that are linked to each other: a private one that's on your computer and a public one that's supposed to sit on the server. When the connection is made, the SSH command sends the private key to the server, the server checks which public keys are authorized for that particular user and sees if they match. If they do, you're in.
+So what we're basically doing now is copying the private key we have on our computer to Gitlab and making it use it to deploy the app to our server. Connecting to the server via a key works like this: you create a pair of keys that are linked to each other: a private one on your computer, and a public one supposed to sit on the server. When you make the connection, the SSH command sends the private key to the server, the server checks which public keys are authorized for that particular user and sees if they match. If they do, you're in.
 
-What this means is that we have to give Gitlab our private key so it can use it to connect to the server.
+What this means is that we have to give Gitlab our private key, so it can use it to connect to the server.
 
 First things first: let's create a variable in Gitlab and keep our private key there: go to *Settings > CI / CD > Variables* and press *Add Variable.* Name the variable `SSH_PRIVATE_KEY` and in the value field paste the value of your private key. You can get this value by running `cat ~/.ssh/id_rsa` in the local terminal and copying the output.
 
 Since you're there already, go ahead and add a variable called `SERVER` that contains the IP of your server and one for the `PORT`. We're going to use those to connect.
 
-I'm just going to paste my whole .gitlab-ci.yml file next. What it does it that it takes my files, runs npm install, runs webpack build and then deploys the app. I've commented what each line does in the file
+I'm just going to paste my whole .gitlab-ci.yml file next. What it does it that it takes my files, runs npm install, runs webpack build and then deploys the app. I've commented what each line does in the file.
 
 ```yaml
 image: node:lts-alpine # the docker image we're going to use to run commands. It's Linux Alpine with node installed
@@ -113,7 +113,7 @@ app-deploy:
 
 ## Some cleanup
 
-I don't want to have the copy of the private key on my computer, that's why I created it separately. Clean everything up by doing `sudo deluser lenny_deployman && sudo rm -rf /home/lenny_deployman`
+I don't want to have the copy of the private key on my computer, that's why I created it separately. Clean everything up by doing `sudo deluser lenny_deployman && sudo rm -rf /home/lenny_deployman`.
 
 These articles where extremely helpful in figuring everything out:
 
