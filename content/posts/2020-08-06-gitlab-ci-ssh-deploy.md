@@ -53,7 +53,7 @@ And now let the fun begin:
 
 1. Generate the keys: `ssh-keygen -t rsa -b 4096`. We're using RSA here. It's not the best, not the worst, but it's backwards compatible, so let's choose the least headache at this point.
     1. Press "Enter" when asked for the file where to save the key
-    2. **Important!** Press "Enter" when asked for the passphrase, so the passphrase is empty. This [the recommended way to go in the Gitlab docs](https://docs.gitlab.com/ee/ci/ssh_keys/), otherwise the script will ask for a password. There are ways to also save the passphrase in a Gitlab variable and then passing it to the script, but they're cumbersome and IMHO the benefits do not match the effort.
+    2. **Important!** Press "Enter" when asked for the passphrase, so the passphrase is empty. This [is the recommended way to go in the Gitlab docs](https://docs.gitlab.com/ee/ci/ssh_keys/), otherwise the script will ask for a password. There are ways to also save the passphrase in a Gitlab variable and then passing it to the script, but they're cumbersome and IMHO the benefits do not match the effort.
 2. Copy the key to the remote server: `ssh-copy-id myapp@server-ip`. You will be prompted for myapp's password.
 3. Test the SSH connection: `ssh myapp@server-ip`. If everything went OK, you should get logged in automatically to the server and in your home folder.
 
@@ -104,8 +104,8 @@ app-deploy:
         - echo "$SSH_PRIVATE_KEY" | ssh-add - # add your private key to the agent
         - mkdir -p ~/.ssh # emulate normal Linux SSH behaviour in Docker
         - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-        - scp -P"$PORT" -r build/resources/main/static untap@"$SERVER":~/tmp # copy the files to the server
-        - ssh -o StrictHostKeyChecking=no untap@"$SERVER" -p "$PORT" 'rm -rf ~/tmp_old && mv ~/www ~/tmp_old && 
+        - scp -P"$PORT" -r build/resources/main/static myapp@"$SERVER":~/tmp # copy the files to the server
+        - ssh -o StrictHostKeyChecking=no myapp@"$SERVER" -p "$PORT" 'rm -rf ~/tmp_old && mv ~/www ~/tmp_old && 
           rm -rf ~/www && mv ~/tmp ~/www && rm -rf ~/tmp' # replace the old files with the new files
 	  
         # - whatever else you need
