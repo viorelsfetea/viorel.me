@@ -19,7 +19,7 @@ I was surprised how much satisfaction I get from repairing things and how much I
 ### My wife's bike chain
 *Which I broke 6 months ago trying to get myself up a steep hill.*
 
-What I learned: 
+What I've learned: 
 
 1. bike chains are consumables
 2. their size depends on how many gears you have (they're thicker for bikes with many gears)
@@ -37,11 +37,11 @@ I have an iPhone SE, first generation, which I absolutely love, mostly because o
 
 What I've had trouble with:
 
-1. The manual that came in the replacement kit was really bad and it mixed the instructions for multiple iPhone models: 5, 5s and 5c, but SE wasn't listed at all. I had to follow the instructions for 5s, but instead I followed the instrctions for 5. For the 5, the battery is glued completely differently
+1. The manual that came in the replacement kit was awful and it mixed the instructions for multiple iPhone models: 5, 5s and 5c, but SE wasn't listed at all. I had to follow the instructions for 5s, but instead I followed those for 5. For the 5, the battery is glued completely differently
 2. Removing the screen was not very easy as some edges were stuck to the body. Slow and steady did the job.
 3. The battery is glued with two plastic stickers to the body and removing the battery was a real pain, because the instructions only said to find said stickers under the battery and pull them out. Unsurprinsingly I pulled them out wrong and it took an hour to remove the battery using a combination of a wedge tool and dental floss. I flossed the battery out by taking the dental floss between the battery and the body from top to bottom. I would have only used the wedge tool harder, but there was a good change of damaging the battery and I've seen how that works out.
 
-What I learned:
+What I've learned:
 
 1. When pulling stuff out, apply the same pressure constantly and have patience. When taking the screen out, there was a good chance of it breaking if I pulled too hard. Applying a medium amount of pressure helped take the screen out slowly but steadily.
 2. Don't be afraid of jamming the flat tool to get the screen out
@@ -53,7 +53,7 @@ The 2TB Seagate Expansion drive gave up the ghost a couple of years ago and I wa
 
 What I've had trouble with: nothing, the most problematic part was deciding which replacement case to buy
 
-What I learned:
+What I've learned:
 
 1. OK, I had no idea that there is an actual normal 3,5" HDD in there. There is an actual normal 3,5" HDD in there. You can take it out and put it in another casing. Or in a computer. The possibilities are endless.
 2. You can buy another casing in which to plug the HDD
@@ -71,7 +71,7 @@ What I've had trouble with:
 1. I was mounting the memory board wrong, although I saw a tutorial on exactly how do it: place it a 45 degree angle and slide it in. "Slide" is the keyword here. I ended up jamming it. It worked, but it was risky. Redid one more time aftewards, and it went really smoothly.
 2. I lost one of the drive screws inside the body. Took some (gentle) shaking to recover it. A magnetic screwdriver would have helped.
 
-What I learned:
+What I've learned:
 
 1. If you have to apply too much pressure, you're doing it wrong. 
 2. Do not underestimate what an SSD can do
